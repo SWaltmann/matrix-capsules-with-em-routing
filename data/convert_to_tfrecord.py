@@ -81,7 +81,7 @@ def convert_to_tfrecord(kind: str, chunkify=False):
     for i in range(5):
         a = fid_info.read(4)
 
-    for j in range(TOTAL_NUM_IMAGES // CHUNK if chunkify else 1):
+    for j in range((TOTAL_NUM_IMAGES//2) // CHUNK if chunkify else 1):
         
         num_images = CHUNK if chunkify else TOTAL_NUM_IMAGES  # 24300 * 2
         num_labels = int(num_images/2) # the images are in stereo pairs, so two images correspond to one label
@@ -166,7 +166,7 @@ def convert_to_tfrecord(kind: str, chunkify=False):
 
 
 if __name__ == "__main__":
-    convert_to_tfrecord(kind='train', chunkify=False)
-    convert_to_tfrecord(kind='test', chunkify=False)
+    convert_to_tfrecord(kind='train', chunkify=True)
+    convert_to_tfrecord(kind='test', chunkify=True)
     
     
