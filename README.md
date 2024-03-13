@@ -22,14 +22,9 @@ $ cd matrix-capsules-with-em-routing
 ```
 
 
-**Step 2.** Download [smallNORB](https://cs.nyu.edu/~ylclab/data/norb-v1.0-small/) dataset.
+**Step 2.** Download smallNORB dataset.
 
-```
-$ chmod +x data/download.sh
-$ ./data/download.sh
-```
-
-The download is 251MB which will then be unzipped to about 856MB. The six ```.mat``` files are placed in the directory ```data/smallNORB/mat```. 
+Find the [smallNORB dataset](https://www.kaggle.com/datasets/nepuerto/the-small-norb-dataset-v10), and download it. The download is 251MB which will then be unzipped to about 856MB. In case it is zipped, unzip it and place all ```.mat``` files in the directory ```data/smallNORB/mat```. 
 
 
 **Step 3.** Set up the environment with Anaconda. (See [here](https://docs.anaconda.com/anaconda/install/linux/) for instructions on how to install Anaconda.)
