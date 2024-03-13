@@ -315,8 +315,10 @@ def main(args):
           
   #----- SESSION TRAIN -----#
   # Session settings
+  gpu_options = tf.GPUOptions(allow_growth=True)
   sess_train = tf.Session(config=tf.ConfigProto(allow_soft_placement=True, 
-                                                log_device_placement=False), 
+                                                log_device_placement=False,
+                                                gpu_options=gpu_options),   
                           graph=g_train)
 
   # Debugger
@@ -361,7 +363,7 @@ def main(args):
   PROFILE_FREQ = 5
   
   for step in range(prev_step, FLAGS.epoch * num_batches_per_epoch + 1): 
-  #for step in range(0,3):
+    #for step in range(0,3):
     # AG 23/05/2018: limit number of iterations for testing
     # for step in range(100):
     epoch_decimal = step/num_batches_per_epoch

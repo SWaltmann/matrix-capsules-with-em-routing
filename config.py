@@ -25,7 +25,7 @@ flags.DEFINE_string('f', '', 'kernel')
 # HYPERPARAMETERS
 #------------------------------------------------------------------------------
 # set to 64 according to authors (https://openreview.net/forum?id=HJWLfGWRb)
-flags.DEFINE_integer('batch_size', 64, 'batch size in total across all gpus') 
+flags.DEFINE_integer('batch_size', 2, 'batch size in total across all gpus') 
 flags.DEFINE_integer('epoch', 2000, 'epoch')
 flags.DEFINE_integer('iter_routing', 3, 'number of iterations')
 flags.DEFINE_integer('num_gpus', 1, 'number of GPUs')
@@ -186,7 +186,7 @@ def get_dataset_path(dataset_name: str):
 
 def get_dataset_size_train(dataset_name: str):
   options = {'mnist': 55000, 
-             'smallNORB': 23400 * 2,
+             'smallNORB': 23400,
              'fashion_mnist': 55000, 
              'cifar10': 50000, 
              'cifar100': 50000}
@@ -195,7 +195,7 @@ def get_dataset_size_train(dataset_name: str):
 
 def get_dataset_size_test(dataset_name: str):
   options = {'mnist': 10000, 
-             'smallNORB': 23400 * 2,
+             'smallNORB': 23400,
              'fashion_mnist': 10000, 
              'cifar10': 10000, 
              'cifar100': 10000}
@@ -203,7 +203,7 @@ def get_dataset_size_test(dataset_name: str):
 
 
 def get_dataset_size_validate(dataset_name: str):
-  options = {'smallNORB': 23400 * 2}
+  options = {'smallNORB': 23400}
   return options[dataset_name]
 
 
