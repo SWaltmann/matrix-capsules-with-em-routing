@@ -25,8 +25,8 @@ flags.DEFINE_string('f', '', 'kernel')
 # HYPERPARAMETERS
 #------------------------------------------------------------------------------
 # set to 64 according to authors (https://openreview.net/forum?id=HJWLfGWRb)
-flags.DEFINE_integer('batch_size', 2, 'batch size in total across all gpus') 
-flags.DEFINE_integer('epoch', 2000, 'epoch')
+flags.DEFINE_integer('batch_size', 16, 'batch size in total across all gpus') 
+flags.DEFINE_integer('epoch', 500, 'epoch')
 flags.DEFINE_integer('iter_routing', 3, 'number of iterations')
 flags.DEFINE_integer('num_gpus', 1, 'number of GPUs')
 flags.DEFINE_float('epsilon', 1e-9, 'epsilon')
@@ -65,7 +65,7 @@ flags.DEFINE_string('debugger', None,
 flags.DEFINE_boolean('profile', False, 
                      '''get runtime statistics to display inTensorboard e.g. 
                      compute time''')
-flags.DEFINE_string('load_dir', None, 
+flags.DEFINE_string('load_dir', 'logs/smallNORB/2024031322_', # default is None 
                     '''directory containing train or test checkpoints to 
                     continue from''')
 flags.DEFINE_string('ckpt_name', None, 
@@ -157,7 +157,7 @@ def load_or_save_hyperparams(train_dir=None):
       
       for name, value in params.items():
         # ignore flags that were specifically set./run in command line
-        if name in specified_flags:
+        if name in specified_flags or name == "load_dir":  # TODO: find and fix the actual bug
           pass
         else:
           FLAGS.__flags[name].value = value 
